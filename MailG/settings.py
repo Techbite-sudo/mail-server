@@ -33,7 +33,7 @@ EMAIL_USE_TLS = True  # Set to True if your SMTP server requires TLS
 EMAIL_HOST_USER = 'bonfacemwema7@gmail.com'  # Your email address
 EMAIL_HOST_PASSWORD = 'otoj mxkl ibbb bwfd'  # Your email password
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app']
 
 # Application definition
 
