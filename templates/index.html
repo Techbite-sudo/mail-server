@@ -5,70 +5,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Landing Page</title>
-    <style>
-      body {
-        font-family: "Arial", sans-serif;
-        background-color: #f5f5f5;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-      }
+    <title>Responsive Mail Website</title>
 
-      .container {
-        text-align: center;
-        max-width: 400px;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      .logo {
-        margin-bottom: 20px;
-      }
-
-      .alert {
-        padding: 10px;
-        background-color: #4caf50;
-        color: white;
-        margin-bottom: 15px;
-        display: none;
-      }
-
-      form {
-        display: flex;
-        flex-direction: column;
-      }
-
-      label {
-        margin-bottom: 8px;
-      }
-
-      input {
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-
-      button {
-        background-color: #4caf50;
-        color: #fff;
-        padding: 10px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-
-      button:hover {
-        background-color: #45a049;
-      }
-    </style>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <!-- Add any additional CSS files here -->
 
     <script>
       function showSuccessAlert() {
@@ -77,34 +18,125 @@
 
         setTimeout(function () {
           alertDiv.style.display = "none";
-        }, 5000); // Adjust the time (in milliseconds) the alert should stay visible
+        }, 5000);
       }
     </script>
   </head>
-
   <body>
-    <div class="container">
-      <div id="successAlert" class="alert">
-        {% for message in messages %} {{ message }} {% endfor %}
-      </div>
+    <!-- HEADER -->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="#" class="nav__logo">
+          <img
+            src="{% static 'rapunzellogo.png' %}"
+            alt="Rapunzel Logo"
+            class="nav__logo-img"
+          />
+        </a>
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#home" class="nav__link active-link">Home</a>
+            </li>
+          </ul>
 
-      <div class="logo">
-        <img src="{% static 'images/logo.png' %}" alt="Your Logo" />
-      </div>
-      <form
-        action="{% url 'index' %}"
-        method="post"
-        onsubmit="showSuccessAlert()"
-      >
-        {% csrf_token %}
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required />
+          <div class="nav__close" id="nav-close">
+            <i class="bx bx-x"></i>
+          </div>
+        </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="bx bx-grid-alt"></i>
+        </div>
+      </nav>
+    </header>
 
-        <button type="submit">Join Us</button>
-      </form>
-    </div>
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <!-- HOME SECTION -->
+      <section class="home container" id="home">
+        <div class="swiper home-swiper">
+          <div class="swiper-wrapper">
+            <!-- HOME SLIDER 1 -->
+            <section class="swiper-slide">
+              <div class="home__content grid">
+                <div class="home__group">
+                  <img
+                    src="{% static 'footerlogo.png' %}"
+                    alt="Footer Logo"
+                    class="home__img"
+                  />
+                  <div class="home__indicator"></div>
+                  <div class="home__details-img">
+                    <h4 class="home__details-title">Rapunzel Hair Affair</h4>
+                    <span class="home__details-subtitle"
+                      >Where Beauty meets Elegance</span
+                    >
+                  </div>
+                </div>
+                <div class="home__data">
+                  <h3 class="home__subtitle">#Unveil Your Radiance</h3>
+                  <h1 class="home__title">
+                    UOOOO <br />
+                    CHIC OR <br />
+                    SLEEK!!
+                  </h1>
+                  <p class="home__description">
+                    Indulge in a world of pampering and luxury at Rapunzel Hair
+                    Affair, where we bring artistry to life and beauty to every
+                    detail. Our salon is a haven for those who seek expert care,
+                    personalized attention, and a touch of glamour. Step into a
+                    realm of relaxation and transformation as we invite you to
+                    experience the finest in beauty services.
+                  </p>
+                  <div id="successAlert" class="alert">
+                    {% for message in messages %} {{ message }} {% endfor %}
+                  </div>
+                  <form
+                    action="{% url 'index' %}"
+                    method="post"
+                    onsubmit="showSuccessAlert()"
+                  >
+                    {% csrf_token %}
+
+                    <table>
+                      <tr>
+                        <td>
+                          <label for="username" class="form-label"
+                            >Username</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            name="name"
+                            placeholder="Username"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label for="email" class="form-label">Email</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="email"
+                            name="email"
+                            placeholder="Email"
+                          />
+                        </td>
+                      </tr>
+                    </table>
+                    <div class="home__buttons">
+                      <button class="button" type="submit">Join Us</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

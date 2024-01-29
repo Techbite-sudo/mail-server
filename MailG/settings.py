@@ -27,7 +27,7 @@ environ.Env.read_env()
 SECRET_KEY = '1sv(p-+q=qu$@c4rm^wb4981b7l3%8dcq#^@b=_=p9#^j&2l_#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'   
